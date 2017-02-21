@@ -66,3 +66,59 @@ PC端时代用的比较多的还是http缓存，HTML5时代有localStorage（只
 - 快速开发
 - 维护简单（比如一个人请假了，另外一个人也可以完成他的工作）
 - 高性能
+
+## 代码的基本结构
+![enter image description here](https://github.com/25paul/Web-App-Reading/blob/master/structure.png)
+
+- reset.css：css初始化
+- .json文件：模拟后台数据
+- jquery.base64.js：编码与解码插件
+- jquery.jsonp.js：做跨域处理的
+- zepto.min.js：轻量级的JavaScript库，与jQuery类似
+- index.html：主文件
+
+## 源码
+**项目的初始结构*
+```
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,minimal-ui">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="css/reset.css">
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<div id="root" class="container">
+			<div id="fiction_chapter_title"></div>
+			<div id="fiction_container" class="m-read-content">
+				<h4>传闻有误</h4>
+				<p>允许异步读取页面的某些部分，允许其显示动态内容，根据时间和用户行为而有所不同。这是在 Ajax背后的技术。
+				允许异步读取页面的某些部分，允许其显示动态内容，根据时间和用户行为而有所不同。这是在 Ajax背后的技术。
+				允许异步读取页面的某些部分，允许其显示动态内容，根据时间和用户行为而有所不同。这是在 Ajax背后的技术。</p>
+				<p>允许异步读取页面的某些部分，允许其显示动态内容，根据时间和用户行为而有所不同。这是在 Ajax背后的技术。</p>
+				<p>允许异步读取页面的某些部分，允许其显示动态内容，根据时间和用户行为而有所不同。这是在 Ajax背后的技术。</p>
+				<p>允许异步读取页面的某些部分，允许其显示动态内容，根据时间和用户行为而有所不同。这是在 Ajax背后的技术。</p>
+			</div>
+			<div class="m=button-bar">
+				<ul class="u-tab">
+					<li id="prev_button">上一章</li>
+					<li id="next_button">下一章</li>
+				</ul>
+			</div>
+		</div>
+		<script src="lib/zepto.min.js"></script>
+		<script>
+			window.jQuery = $;
+		</script>
+		<script src="js/jquery.base64.js"></script>
+		<script src="js/jquery.jsonp.js"></script>
+		<script>
+			  //...编写JavaScript交互代码
+</script>
+	</body>
+</html>
+```
