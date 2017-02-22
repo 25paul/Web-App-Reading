@@ -78,7 +78,7 @@ PC端时代用的比较多的还是http缓存，HTML5时代有localStorage（只
 - index.html：主文件
 
 ## 源码
-**项目的初始结构*
+**项目的初始结构**
 ```
 <!DOCTYPE html>
 <html ng-app="app">
@@ -122,3 +122,62 @@ PC端时代用的比较多的还是http缓存，HTML5时代有localStorage（只
 	</body>
 </html>
 ```
+在这基础上再继续添加上边栏、下边栏、中间点击层。<br/>
+
+**交互部分**
+```
+(function () {
+        var Util = (function () {
+        })();
+        function main() {
+            //todo 入口函数
+        }
+        function ReaderModel() {
+            //todo 实现和阅读器相关的数据交互的方法
+        }
+        function ReaderBaseFrame() {
+            //todo 渲染基本的UI结构
+        }
+        function EventHanlder() {
+            //todo 交互的事件绑定
+        }
+        main();//调用入口函数
+    })()//闭包不影响全局,笔译避免变量被污染
+```
+
+**本地存储localStorage**
+```
+var prefix = 'fiction_reader_'    //给localStorage的key添加一个前缀，以免跟其他变量互相干扰
+var StorageGetter = function (key) {
+    return localStorage.getItem(prefix + key);
+}
+var StorageSetter = function (key, val) {
+    return localStorage.setItem(prefix + key, val)
+}
+return {
+      StorageGetter:StorageGetter,
+      StorageSetter:StorageSetter
+}
+```
+
+**跨域请求数据**
+```
+//数据解密
+function getBSONP(url, callback) {
+	return $.jsonp({
+		url : url,
+		cache : true,
+		// 指定的值是duokan_fiction_chapter，服务端返回的json数据必须包含在duokan_fiction_chapter()里面。
+		callback : "duokan_fiction_chapter",    //这个callback跟参数的callback不一样的
+		success : function(result) {
+			// debugger;
+			var data = $.base64.decode(result);  
+			var json = decodeURIComponent(escape(data));
+			callback(json);
+		}
+	});
+
+};
+```
+
+具体情况可查看代码。
